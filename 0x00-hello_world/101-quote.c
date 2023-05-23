@@ -7,12 +7,12 @@
  *    ssize_t write(int fd, const void *buf, size_t count);
  *
  * Return: This time we return an error 1.
-*/
+ */
 
 int main(void)
 {
-	char gg[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
-	
-	fprintf(stderr, gg, sizeof(char));
-	return (1);
+    char gg[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+
+    fprintf(stderr, "%s", gg);
+    return 1;
 }
