@@ -11,6 +11,8 @@
 
 int main(void)
 {
-	fprintf(stderr, "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n");
+	char gg[59] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+	
+	fprintf(stderr, gg);
 	return (1);
 }
