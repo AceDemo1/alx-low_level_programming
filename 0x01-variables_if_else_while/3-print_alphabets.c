@@ -16,10 +16,10 @@ int main(void)
 	
 	while (a <= 'z'&& A <= 'Z')
 	{
-		putchar(a A);
+		putchar((a)(A));
 		a++, A++;
 	}
-	putchar('/n');
+	putchar('\n');
 
 	return(0);
 }
