@@ -17,10 +17,10 @@ int main(void)
 	{
 		/*convert digit to ASCII representation*/
 		putchar(digit + '0');
-		if (digit !=9)
+		if (digit !=9 )
 		{
 		putchar(',');
-		putchar(' ');		
+		putchar(' ');
 		}
 		digit++;
 	}
