@@ -11,13 +11,12 @@
 
 int main(void)
 {
-	int n1;
+	int n1 = 0;
 
-	n1 = 0;
 	while (n1 <= 8)
 	{
-
 		int n2 = n1 + 1;
+
 		while (n2 <= 9)
 		{
 			putchar(n1 + '0');
@@ -31,5 +30,6 @@ int main(void)
 		}
 		n1++;
 	}
+	putchar('\n')
 	return (0);
 }
