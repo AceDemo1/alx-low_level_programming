@@ -3,8 +3,7 @@
 /**
  * main - Entry point
  *
- * Description: print value alphabet in lower case
- * 
+ * Description: print value alphabet in lower case 
  * 
  * Return: Always 0 (Success)
 */
@@ -12,7 +11,8 @@
 int main(void)
 {
 	int alpha = 'a';
-	while (alpha <='z')
+	
+	while (alpha <= 'z')
 	{
 		putchar(alpha);
 		alpha++;
