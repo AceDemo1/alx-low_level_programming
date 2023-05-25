@@ -12,7 +12,7 @@
 int main(void)
 {
 	int digit = 0;
-	char al = a;
+	char al = 'a';
 
 	while (digit <= 9)
 	{
@@ -20,7 +20,7 @@ int main(void)
 		putchar(digit + '0');
 		++digit;
 	}
-	while (al <=f)
+	while (al <= 'f')
 	{
 		putchar(al);
 		al++;
