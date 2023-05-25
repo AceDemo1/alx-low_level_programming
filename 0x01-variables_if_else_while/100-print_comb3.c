@@ -20,8 +20,8 @@ int main(void)
 		{
 			putchar(n1 + '0');
 			putchar(n2 + '0');
-			purchar(',');
-			purchar(' ');
+			putchar(',');
+			putchar(' ');
 			n2++;	
 		}
 		n1++;
