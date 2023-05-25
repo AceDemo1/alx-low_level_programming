@@ -3,8 +3,8 @@
 /**
  * main - Entry point
  *
- * Description: print value alphabet in lower case 
- * 
+ * Description: print value alphabet in lower case
+ *
  * Return: Always 0 (Success)
 */
 
