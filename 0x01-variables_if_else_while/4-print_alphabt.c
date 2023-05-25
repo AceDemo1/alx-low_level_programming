@@ -12,8 +12,9 @@ int main(void)
 {
 	int alpha = 'a';
 
-	while (alpha < 'e' && 'e' < alpha < 'q' && 'q' > alpha <= 'z')
+	while (alpha <= 'z')
 	{
+		if (alpha != e && != q)
 		putchar(alpha);
 		alpha++;
 	}
