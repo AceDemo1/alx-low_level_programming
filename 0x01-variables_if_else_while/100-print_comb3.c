@@ -19,7 +19,7 @@ int main(void)
 		while (n2 <=9)
 		{
 			putchar(n1 + '0');
-			purchar(n2 + '0');
+			putchar(n2 + '0');
 			purchar(',');
 			purchar(' ');
 			n2++;	
