@@ -16,9 +16,10 @@ int main(void)
 	n1 = 0;
 	while (n1 <= 8)
 	{
+
+		int n2 = n1 + 1;
 		while (n2 <= 9)
 		{
-			int n2 = n1 + 1;
 			putchar(n1 + '0');
 			putchar(n2 + '0');
 			if (n1 != 8 && n2 != 9)
