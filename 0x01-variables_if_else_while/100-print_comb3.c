@@ -21,7 +21,7 @@ int main(void)
 		{
 			putchar(n1 + '0');
 			putchar(n2 + '0');
-			if (n1 != 8 && n2 != 9)
+			if (!(n1 == 8 && n2 == 9))
 			{
 				putchar(',');
 				putchar(' ');
