@@ -15,9 +15,9 @@ int main(void)
 
 	while (n1 <= 7)
 	{
-		int n2 = n1 +1;
+		int n2 = n1 + 1;
 
-		while (n2 <=8)
+		while (n2 <= 8)
 		{
 		int n3 = n2 + 1;
 
@@ -26,15 +26,16 @@ int main(void)
 			putchar(n1 + '0');
 			putchar(n2 + '0');
 			putchar(n3 + '0');
-			if (!(n1 == 7 && n2 == 8 && n3 ==9))
+			if (!(n1 == 7 && n2 == 8 && n3 == 9))
 			{
 				putchar(',');
 				putchar(' ');
 			}
-			n2++;
+			n3++;
 		}
-		n1++;
+		n2++;
 		}
+	n3++;
 	}
 	putchar('\n');
 
