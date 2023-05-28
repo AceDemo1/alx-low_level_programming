@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include <string.h>
 /**
+* _putchar - to printout characters 
+*
 * main -Entry point
 *
 * Description - prints _putchar
