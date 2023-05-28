@@ -1,26 +1,27 @@
 #include<stdio.h>
 #include <string.h>
 /**
- *
- * print - _putchar
- *
- * Return 0 (sucess)
+* main -Entry point
+* 
+* Description - prints _putchar
+*
+* Return: Always 0 (sucess)
 */
 
 int _putchar(char c);
 
 int main(void)
 {
-	char a[] = "_putchar";
-	int i = 0;
-	int j = strlen(a);
-	while(i <= j)
-	{
-		_putchar(a[i]);
-		i++;
-	}
+char a[] = "_putchar";
+int i = 0;
+int j = strlen(a);
+while(i < j)
+{
+_putchar(a[i]);
+i++;
+}
 
-	_putchar('\n');
+_putchar('\n');
 
 return (0);	
 }
