@@ -1,7 +1,9 @@
 #include<stdio.h>
 #include <string.h>
 /**
-* _putchar - to printout characters 
+* _putchar - to printout characters
+*
+* @c: The character to be printed
 *
 * main - Entry point
 *
