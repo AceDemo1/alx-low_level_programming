@@ -1,15 +1,12 @@
 #include"main.h"
 #include <string.h>
 /**
-* @c: The character to be printed
-*
-* main - Entry point
-*
-* Description: prints _putchar using putchar prototype
-*
-*
-* Return: Always 0 (sucess)
-*/
+ * _putchar - Custom function to print a single character
+ * @c: The character to be printed
+ *
+ * Description: This function prints a single character to the standard output.
+ * Return: On success, it returns the character that was printed.
+ */
 
 int _putchar(char c);
 
