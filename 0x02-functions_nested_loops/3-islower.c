@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_alphabet_x10 - function that will print the alphabet 10 times
+ *_islower - returns 1 for lowercase alphabet and 0 for uppercase alphabet
  */
 
 int _islower(int c)
@@ -12,8 +12,11 @@ int _islower(int c)
 	int j = 0;
 
 	if (c == al[i])
+	{	
 		return 1;
+	}
 	else if (c == AL[j])
-	
+	{
 		return 0;
+	}
 }
