@@ -6,8 +6,8 @@
 
 int _islower(int c)
 {
-	char al[] = "abcdefghijklmnopqrstuvwxyz"
-	char AL[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	char al[] = "abcdefghijklmnopqrstuvwxyz";
+	char AL[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	int i = 0;
 	int j = 0;
 
