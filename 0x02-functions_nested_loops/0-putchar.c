@@ -7,7 +7,7 @@
 *
 * main - Entry point
 *
-* Description - prints _putchar
+* Description: This function prints a single character to the standard output.
 *
 * Return: Always 0 (sucess)
 */
