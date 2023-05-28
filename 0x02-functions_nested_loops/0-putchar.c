@@ -1,13 +1,10 @@
 #include<stdio.h>
 #include <string.h>
 /**
-* _putchar - to printout characters
+*  main - Entry point
 *
-* @c: The character to be printed
+* Description: prints _putchar using putchar prototype
 *
-* main - Entry point
-*
-* Description: This function prints a single character to the standard output.
 *
 * Return: Always 0 (sucess)
 */
