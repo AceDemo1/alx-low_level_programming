@@ -12,11 +12,8 @@ int _islower(int c)
 	int j = 0;
 
 	if (c == al[i])
-	{
 		return 1;
-	}
 	else if (c == AL[j])
-	{
+	
 		return 0;
-	}
 }
