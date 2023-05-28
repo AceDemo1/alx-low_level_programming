@@ -4,6 +4,8 @@
  * _putchar - Custom function to print a single character
  * @c: The character to be printed
  *
+ * main - Entry point
+ *
  * Description: This function prints a single character to the standard output.
  * Return: On success, it returns the character that was printed.
  */
