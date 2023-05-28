@@ -8,8 +8,9 @@ int _islower(int c)
 {
 	char al[] = "abcdefghijklmnopqrstuvwxyz";
 	char AL[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	int i = 0;
-	int j = 0;
+	int i, j;
+	i >= 0 && i <= 25;
+	j >= 0 && j <= 25;
 
 	if (c == al[i])
 	{	
