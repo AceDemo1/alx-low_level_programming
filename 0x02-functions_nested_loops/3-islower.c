@@ -9,14 +9,12 @@ int _islower(int c)
 	char al[] = "abcdefghijklmnopqrstuvwxyz";
 	char AL[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	int i, j;
-	i >= 0 && i <= 25;
-	j >= 0 && j <= 25;
 
-	if (c == al[i])
-	{	
+	if (i >= 0 && i <= 25 && c == al[i]);
+	{
 		return 1;
 	}
-	else if (c == AL[j])
+	else if (j >= 0 && j <= 25 && c == AL[j]);
 	{
 		return 0;
 	}
