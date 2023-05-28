@@ -1,7 +1,9 @@
 #include<stdio.h>
 #include <string.h>
 /**
-*  main - Entry point
+* @c: The character to be printed
+*
+* main - Entry point
 *
 * Description: prints _putchar using putchar prototype
 *
