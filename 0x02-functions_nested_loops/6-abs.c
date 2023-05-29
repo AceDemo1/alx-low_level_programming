@@ -9,12 +9,13 @@
 
 int _abs(int r)
 {
-	int r;
 	if (r == -r)
 	{
-		_putchar('r');
+		return(-r);
 	}
-	return (0);
-
+	else
+	{
+		return (n);
+	}
 
 }
