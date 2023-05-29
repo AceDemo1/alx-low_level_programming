@@ -22,7 +22,7 @@ void times_table(void)
 			}
 			else
 			{
-				_putchar(prod);
+				_putchar(prod + '0');
 			}
 			if (j != 9)
 			{
