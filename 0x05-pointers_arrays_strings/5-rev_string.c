@@ -13,7 +13,7 @@ void rev_string(char *s)
 	char *st = s;
 
 	/*find string length without null char*/
-	while (s != '\0')
+	while (*s != '\0')
 	{
 		len++;
 		s++;
