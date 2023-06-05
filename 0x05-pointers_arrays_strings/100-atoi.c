@@ -30,7 +30,7 @@ int _atoi(char *s)
 	}
 	while (*s && !(*s >= '0' && *s <= '9'))
 	{
-		i++;
+		s++;
 	}
 	re = re * si;
 	return (re);
