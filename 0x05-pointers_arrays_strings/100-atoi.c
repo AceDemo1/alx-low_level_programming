@@ -27,7 +27,7 @@ int _atoi(char *s)
 		re = re * 10 + (*s - '0');
 		s++;
 	}
-	re = re * si
+	re = re * si;
 	return (re);
 }
 
