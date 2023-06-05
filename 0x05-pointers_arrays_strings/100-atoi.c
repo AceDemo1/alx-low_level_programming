@@ -28,6 +28,10 @@ int _atoi(char *s)
 		if (*s>= 'a' && *s <= 'z')
 			break;
 	}
+	while (*s && !(*s >= '0' && *s <= '9'))
+	{
+		i++;
+	}
 	re = re * si;
 	return (re);
 }
