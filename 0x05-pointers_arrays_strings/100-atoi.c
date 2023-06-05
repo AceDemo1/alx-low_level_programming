@@ -25,6 +25,8 @@ int _atoi(char *s)
 	{
 		re = re * 10 + (*s - '0');
 		s++;
+		if (*s>= 'a' && *s <= 'z')
+			break;
 	}
 	re = re * si;
 	return (re);
