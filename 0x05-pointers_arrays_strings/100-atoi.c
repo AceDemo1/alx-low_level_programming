@@ -11,8 +11,10 @@ int _atoi(char *s)
 	int si = 1;
 	int re = 0;
 
-	while (*s == ' ')
+	if (*s == ' ')
+	{
 		s++;
+	}
 	if (*s == '-')
 	{
 		si = -1;
