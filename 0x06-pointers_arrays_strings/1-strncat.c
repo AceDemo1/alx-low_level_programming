@@ -8,14 +8,13 @@
  * Return: pointer to the resulting string
  */
 char *_strncpy(char *dest, char *src, int n)
-{
 	char *p = dest;
 
 	while (*p != '\0')
 	{
 		p++;
 	}
-	while (*src != '\0' && n > 0)
+	while (n > 0 && (*src != '\0' || n > 1))
 	{
 		*p = *src;
 		p++;
