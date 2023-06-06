@@ -1,6 +1,25 @@
 #!/bin/bash
-echo "enter message: "
-read message
+
+
+# Get the previous commit message
+previous_commit_message=$(git log -1 --pretty=%B)
+
+# Prompt for commit message
+echo "Enter commit message:"
+read commit_message
+
+# Check if the previous commit message is the same
+if [ "$commit_message" = "$previous_commit_message" ]; then
+    echo "Previous commit message is the same: \"$previous_commit_message\""
+    read -p "Do you want to reuse the previous commit message? (y/n): " reuse_message
+    
+    if [ "$reuse_message" = "y" ] || [ "$reuse_message" = "Y" ]; then
+        commit_message="$previous_commit_message"
+    fi
+fi
+
+# Execute the Git commands
 git add .
-git commit -m "$message"
+git commit -m "$commit_message"
 git push
+
