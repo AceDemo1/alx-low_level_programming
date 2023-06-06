@@ -1,6 +1,5 @@
 #include "main.h"
-
-/**
+/** 
  * _strncpy - copies a string
  * @dest: destination string
  * @src: source string
@@ -8,7 +7,7 @@
  *
  * Return: pointer to the resulting string
  */
-char *_strncat(char *dest, char *src, int n)
+char *_strncpy(char *dest, char *src, int n)
 {
 	char *p = dest;
 
