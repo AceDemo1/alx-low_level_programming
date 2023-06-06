@@ -1,13 +1,13 @@
-/**
- * _strncat - a function that concatenates two strings.
- *
- * @dest: pointer to destination input
- * @src: pointer to source input
- * @n: most number of bytes from @src
- *
- * Return: @dest
-*/
+#include "main.h"
 
+/**
+ * _strncpy - copies a string
+ * @dest: destination string
+ * @src: source string
+ * @n: number of bytes to copy
+ *
+ * Return: pointer to the resulting string
+ */
 char *_strncat(char *dest, char *src, int n)
 {
 	char *p = dest;
