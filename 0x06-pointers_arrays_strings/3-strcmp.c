@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 **
+=======
+/**
+>>>>>>> 68338275640506d416f26299e347bf9a3e4be58a
  * _strcmp - compares two strings
  * @s1: first string
  * @s2: second string
@@ -13,9 +17,18 @@ int _strcmp(char *s1, char *s2)
     {
 	    if (s1[i] != s2[i])
         {
+<<<<<<< HEAD
 		return (s1[i] - s2[i]);
 	}
 	i++;
     }
 	return s1[i] - s2[i];
+=======
+            return (s1[i] - s2[i]);
+            break;
+        }
+        i++;
+    }
+   return (s1[i] - s2[i]);
+>>>>>>> 68338275640506d416f26299e347bf9a3e4be58a
 }
