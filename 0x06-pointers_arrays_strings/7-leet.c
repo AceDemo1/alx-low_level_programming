@@ -9,12 +9,11 @@
 char *leet(char *s)
 {
 	int i, j;
-
-	i = 0;
 	char a[] = "aeotl";
 	char b[] = "AEOTL";
 	char c[] = "43071";
 
+	i = 0;
 	while (s[i] != '\0')
 	{
 		j = 0;
