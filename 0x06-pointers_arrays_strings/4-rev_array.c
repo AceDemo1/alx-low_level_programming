@@ -16,9 +16,9 @@ void reverse_array(int *a, int n)
 	j = n - 1;
 	while (i < j)
 	{
-		temp = a[i];
+		te = a[i];
 		a[i] = a[j];
-		a[j] = temp;
+		a[j] = te;
 		i++;
 		j--;
 	}
