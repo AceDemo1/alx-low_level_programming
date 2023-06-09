@@ -19,6 +19,6 @@ int _strcmp(char *s1, char *s2)
     }
 
     // Strings are equal up to this point, check the remaining characters
-    return s1[i] - s2[i];
+    return (s1[i] - s2[i]);
 }
 
