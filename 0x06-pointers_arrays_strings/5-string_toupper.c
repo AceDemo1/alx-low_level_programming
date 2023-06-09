@@ -12,7 +12,7 @@ char *string_toupper(char *s)
 {
 	int i = 0;
 
-	while (s[i] >= 'a' && s[i])
+	while (s[i] >= 'a' && s[i] <= 'z')
 	{
 		s[i] = s[i] - ('b' - 'B');
 		i++;
