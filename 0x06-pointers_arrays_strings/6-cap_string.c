@@ -12,7 +12,7 @@ char *cap_string(char *str)
 
     // Capitalize first letter of the string
     if (str[0] >= 'a' && str[0] <= 'z')
-        str[0] = toupper(str[0]);
+        str[0] = str[0] - 32;
 
     // Iterate through the rest of the string
     for (i = 1; str[i] != '\0'; i++)
@@ -26,7 +26,7 @@ char *cap_string(char *str)
         {
             // Capitalize the next character if it is a lowercase letter
             if (str[i + 1] >= 'a' && str[i + 1] <= 'z')
-                str[i + 1] = toupper(str[i + 1]);
+                str[i + 1] = str[i + 1] - 32;
         }
     }
 
