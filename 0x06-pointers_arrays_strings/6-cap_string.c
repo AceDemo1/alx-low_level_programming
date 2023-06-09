@@ -1,7 +1,7 @@
 #include <ctype.h>
 
 /**
- * cap_string - capitalizes all words of a string
+ * cap_string - capitalizes all words in a string
  * @str: input string
  *
  * Return: pointer to the modified string
@@ -9,39 +9,27 @@
 char *cap_string(char *str)
 {
     int i;
-    int capitalize_next = 1;
 
-    for (i = 0; str[i] != '\0'; i++)
+    // Capitalize first letter of the string
+    if (str[0] >= 'a' && str[0] <= 'z')
+        str[0] = toupper(str[0]);
+
+    // Iterate through the rest of the string
+    for (i = 1; str[i] != '\0'; i++)
     {
-        if (capitalize_next && islower(str[i]))
+        // Check if current character is a separator
+        if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
+            str[i] == ',' || str[i] == ';' || str[i] == '.' ||
+            str[i] == '!' || str[i] == '?' || str[i] == '"' ||
+            str[i] == '(' || str[i] == ')' || str[i] == '{' ||
+            str[i] == '}')
         {
-            str[i] = toupper(str[i]);
+            // Capitalize the next character if it is a lowercase letter
+            if (str[i + 1] >= 'a' && str[i + 1] <= 'z')
+                str[i + 1] = toupper(str[i + 1]);
         }
-
-        capitalize_next = is_separator(str[i]);
     }
 
     return str;
-}
-
-/**
- * is_separator - checks if a character is a word separator
- * @c: input character
- *
- * Return: 1 if the character is a separator, 0 otherwise
- */
-int is_separator(char c)
-{
-    char separators[] = " \t\n,;.!?\"(){}";
-
-    for (int i = 0; separators[i] != '\0'; i++)
-    {
-        if (c == separators[i])
-        {
-            return 1;
-        }
-    }
-
-    return 0;
 }
 
