@@ -9,7 +9,7 @@ int _strcmp(char *s1, char *s2)
 {
     int i = 0;
 
-    while (s1[i] != '\0' || s2[i] != '\0')
+    while (s1[i] != '\0' && s2[i] != '\0')
     {
         if (s1[i] != s2[i])
         {
@@ -17,8 +17,12 @@ int _strcmp(char *s1, char *s2)
         }
         i++;
     }
-
-    // Strings are equal up to this point, check the remaining characters
-    return (0);
+    // Check if both strings have reached their terminators
+    if (s1[i] == '\0' && s2[i] == '\0')
+        return 0;
+    else if (s1[i] == '\0')
+        return -1; // s1 is shorter than s2
+    else
+        return 1; // s2 is shorter than s1
 }
 
