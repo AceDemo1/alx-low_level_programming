@@ -8,12 +8,10 @@
 
 char *leet(char *s)
 {
-	int i, j, k;
+	int i, j;
 
 	i = 0;
 	j = 0;
-	k = 0;
-
 	char a[] = "aeotl";
 	char b[] = "AEOTL";
 	char c[] = "43071";
@@ -33,5 +31,3 @@ char *leet(char *s)
 	}
 	return (s);
 }
-
-
