@@ -3,9 +3,7 @@
  * @s1: first string
  * @s2: second string
  *
- * Return: return (s1[i] - s2[i]) if strings are equal,
- * negative if s1 is less than s2,
- * positive if s1 is greater than s
+ * Return: (s1[i] - s2[i]) if strings are equal
  *
  */
 int _strcmp(char *s1, char *s2)
