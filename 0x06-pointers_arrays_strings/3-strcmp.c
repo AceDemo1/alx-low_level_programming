@@ -1,9 +1,9 @@
 /**
- * _strcmp - compares two strings
+ * _strcmp - Compares two strings
  * @s1: first string
  * @s2: second string
  *
- * Return: (s1[i] - s2[i])
+ * Return: Difference between the ASCII values of the first differing characters.
  *
  */
 int _strcmp(char *s1, char *s2)
@@ -12,11 +12,11 @@ int _strcmp(char *s1, char *s2)
 
 	while (s1[i] != '\0' && s2[i] != '\0')
 	{
-	if (s1[i] != s2[i])
-	{
-		return (s1[i] - s2[i]);
-		break;
-	}
+		if (s1[i] != s2[i])
+		{
+			return (s1[i] - s2[i]);
+			break;
+		}
 	i++;
 	}
 	return (s1[i] - s2[i]);
