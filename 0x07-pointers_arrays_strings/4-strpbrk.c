@@ -7,10 +7,10 @@
  *
  * Return: a pointer to the byte
  */
+
 char *_strpbrk(char *s, char *accept)
 {
-	int i;
-	int j;
+	int i, j;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -19,10 +19,10 @@ char *_strpbrk(char *s, char *accept)
 		while (accept[j] != '\0')
 		{
 			if (s[i] == accept[j])
-				return (&(s[i]));
+				return (s + i);
 			j++;
 		}
 		i++;
 	}
-	return (NULL);
+	return ('\0');
 }
