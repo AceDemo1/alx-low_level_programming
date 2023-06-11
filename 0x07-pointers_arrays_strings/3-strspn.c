@@ -23,6 +23,8 @@ unsigned int _strspn(char *s, char *accept)
 				break;
 			}
 		}
+		if (accept[y] == '\0')
+			return (z);
 	}
 	return (z);
 }
