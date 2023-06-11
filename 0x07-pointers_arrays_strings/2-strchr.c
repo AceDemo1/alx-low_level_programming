@@ -9,21 +9,19 @@
 
 char *_strchr(char *s, char c)
 {
-	int i = 0;
-	int j = 0;
-
-	while (s[j] != '\0')
+	while (*s != '\0')
 	{
-		j++;
+		if (*s == c)
+			return (s);
+		s++;
 	}
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			return (&(s[i]));
-		i++;
-	}
-	if (s[j] == c)
-		return &(s[j]);
-	return (NULL);
+	/**
+	 * if c is '\0', you should return
+	 * the pointer to the '\0' of the
+	 * string s
+	*/
+	if (*s == c)
+		return (s);
+	/*return null if not found*/
+	return ('\0');
 }
-
