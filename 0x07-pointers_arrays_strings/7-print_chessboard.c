@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 /**
  * print_chessboard - prints chessboard.
  * @a: matrix
@@ -13,10 +13,10 @@ void print_chessboard(char (*a)[8])
 		j = 0;
 		while (j < 8)
 		{
-			printf("%c", a[i][j]);
+			_putchar("%c", a[i][j]);
 			j++;
 		}
-		printf("\n");
+		_putchar('\n');
 		i++;
 	}
 }
