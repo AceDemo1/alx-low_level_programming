@@ -12,7 +12,7 @@ int check(int a, int b)
 		return (1);
 	if (a % b == 0)
 		return (0);
-	return (check(a, b - 1);
+	return (check(a, b - 1));
 }
 /**
  * is_prime_number - states if number is prime
@@ -21,5 +21,5 @@ int check(int a, int b)
  */
 int is_prime_number(int n)
 {
-	return (check(n, n - 1);
+	return (check(n, n - 1));
 }
