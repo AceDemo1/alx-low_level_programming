@@ -11,7 +11,7 @@ int check(int a, int b)
 		return (a);
 	else if (a * a > 0)
 		return (-1);
-	else 
+	else
 		return (check(a + 1, b));
 }
 /**
