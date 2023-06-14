@@ -23,3 +23,4 @@ int check(int a, int b)
 int is_prime_number(int n)
 {
 	return (check(n, n - 1);
+}
