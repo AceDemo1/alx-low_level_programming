@@ -10,7 +10,13 @@
 int main(int argc, char **argv)
 {
 	(void)argc;
+	int i = 0;
 
-	printf("%s\n", argv[0]);
+	while (argv[0][i] != '\0')
+	{
+		putchar(argv[0][i]);
+		i++;
+	}
+	putchar('\n');
 	return (0);
 }
