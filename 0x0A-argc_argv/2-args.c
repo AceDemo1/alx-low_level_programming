@@ -9,7 +9,7 @@
   {
           int i = 0;
           
-          while (i < argc - 1)
+          while (i < argc)
           {
                   printf("%s\n", argv[i]);
                   i++;
