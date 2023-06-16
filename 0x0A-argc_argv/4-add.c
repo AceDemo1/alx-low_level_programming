@@ -9,7 +9,8 @@
  */
 int main(int argc, char *argv[])
 {
-	int i = 1, sum = 0;
+	int i;
+	int sum;
 
 	if (argc < 2)
 	{
@@ -18,6 +19,8 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
+		i = 0;
+		sum = 0;
 		while (i < argc)
 		{
 			if (!isdigit(*argv[i]))
