@@ -15,13 +15,15 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-	int cents = atoi(argv[1]), coins = 0;
+	int cents = atoi(argv[1]);
 
 	if (cents < 0)
 	{
 		printf("0\n");
 		return(0);
 	}
+	int coins = 0;
+
 	coins = coins + cents / 25;
 	cents = cents % 25;
 	coins = coins + cents / 10;
