@@ -8,7 +8,8 @@
  */
 int main(int argc, char *argv[])
 {
-	int i, mul;
+	int i = 1, mul, atoi(argv[]);
+
 	if (argc < 3 || argc > 3)
 	{
 		printf("%s\n", Error);
@@ -16,7 +17,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		mul = argv[1] * argv[2];
+		mul = argv[i] * argv[i + 1];
 		printf("%d\n, mul);
 	}
 }
