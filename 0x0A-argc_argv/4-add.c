@@ -34,10 +34,7 @@ int main(int argc, char *argv[])
 				}
 			j++;
 			}
-			else
-			{
-				sum += atoi(argv[i]);
-			}
+			sum += atoi(argv[i]);
 			i++;
 		}
 	printf("%d\n", sum);
