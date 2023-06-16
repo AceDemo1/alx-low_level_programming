@@ -23,10 +23,16 @@ int main(int argc, char *argv[])
 		sum = 0;
 		while (i < argc)
 		{
-			if (!isdigit(*argv[i]))
+			char *a = argv[i];
+			j = 0;
+			while (a[j] != '\0')
 			{
-				printf("%s\n", "Error");
-				return (1);
+				if (!isdigit(*argv[i]))
+				{
+					printf("%s\n", "Error");
+					return (1);
+				}
+			j++;
 			}
 			else
 			{
