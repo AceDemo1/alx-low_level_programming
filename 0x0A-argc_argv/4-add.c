@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	{
 		while (i < argc)
 		{
-			if (!isdigit(*argv[i]))
+			if (!isdigit(atoi(argv[i])))
 			{
 				printf("%s\n", "Error");
 				return (1);
