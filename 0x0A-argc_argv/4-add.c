@@ -16,19 +16,21 @@ int main(int argc, char *argv[])
 		printf("%d\n", 0);
 		return (0);
 	}
-	else if (!isdigit(argv[i]))
-	{
-		printf("%s\n", "Error");
-		return (1);
-	}
 	else
 	{
 		while (i < argc)
 		{
-			printf("%d\n", sum += atoi(argv[i]));
+			if (!isdigit(argv[i]))
+			{
+				printf("%s\n", "Error");
+				return (1);
+			}
+			else
+			{
+				printf("%d\n", sum += atoi(argv[i]));
+			}
 			i++;
 		}
-	
 	return (0);
 	}
 }
