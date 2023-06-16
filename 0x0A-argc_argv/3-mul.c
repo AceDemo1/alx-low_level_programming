@@ -19,5 +19,6 @@ int main(int argc, char *argv[])
 	{
 		mul = argv[i] * argv[i + 1];
 		printf("%d\n, mul);
+		return (0);
 	}
 }
