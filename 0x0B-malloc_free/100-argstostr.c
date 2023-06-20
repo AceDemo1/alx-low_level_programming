@@ -31,14 +31,15 @@ char *argstostr(int ac, char **av)
 			tot++;
 		}
 		a++;
-		tot;
+		tot++;
 	}
 	newstr = malloc(sizeof(char) * (tot + 1));
 	if (newstr == NULL)
 	{
 		return (NULL);
 	}
-	i = 0;
+	int i = 0;
+	int k = 0;
 
 	while (i < ac)
 	{
