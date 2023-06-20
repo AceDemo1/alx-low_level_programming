@@ -34,6 +34,10 @@ char *argstostr(int ac, char **av)
 		tot += a;
 	}
 	newstr = malloc(sizeof(char) * (tot + 1));
+	if (newstr == NULL)
+	{
+		return (NILL);
+	}
 	i = 0;
 
 	while (i < ac)
