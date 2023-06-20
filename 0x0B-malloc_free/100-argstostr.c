@@ -28,10 +28,10 @@ char *argstostr(int ac, char **av)
 		while (av[a][b] != '\0')
 		{
 			b++;
+			tot++;
 		}
-		tot += b;
 		a++;
-		tot += a;
+		tot;
 	}
 	newstr = malloc(sizeof(char) * (tot + 1));
 	if (newstr == NULL)
