@@ -50,7 +50,7 @@ char *argstostr(int ac, char **av)
 			j++;
 			k++;
 		}
-		newstr[i] = '\n';
+		newstr[k] = '\n';
 		k++;
 		i++;
 	}
