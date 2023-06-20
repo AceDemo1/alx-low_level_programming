@@ -12,6 +12,7 @@
 char *argstostr(int ac, char **av)
 {
 	int tot = 0, i = 0, k = 0, a = 0;
+	char *newstr;
 
 	if (ac == 0 || av == NULL)
 	{
@@ -29,8 +30,7 @@ char *argstostr(int ac, char **av)
 		a++;
 		tot++;
 	}
-	char *newstr = (char *)malloc(sizeof(char) * (tot + 1));
-
+	newstr = (char *)malloc(sizeof(char) * (tot + 1));
 	if (newstr == NULL)
 	{
 		return (NULL);
