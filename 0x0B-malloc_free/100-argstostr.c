@@ -28,7 +28,7 @@ char *argstostr(int ac, char **av)
 		}
 		a++;
 	}
-	char *newstr = malloc(sizeof(char) * (tot + 1));
+	char *newstr = (char *)malloc(sizeof(char) * (tot + 1));
 
 	if (newstr == NULL)
 	{
@@ -49,5 +49,5 @@ char *argstostr(int ac, char **av)
 		i++;
 	}
 	newstr[k] = '\0';
-	return(newstr);
+	return (newstr);
 }
