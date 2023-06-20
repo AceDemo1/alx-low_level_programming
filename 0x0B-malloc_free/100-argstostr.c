@@ -20,7 +20,7 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	}
 	char *newstr;
-	int a = 0, i = 0;
+	int a = 0;
 
 	while (a < ac)
 	{
@@ -36,7 +36,7 @@ char *argstostr(int ac, char **av)
 	newstr = malloc(sizeof(char) * (tot + 1));
 	if (newstr == NULL)
 	{
-		return (NILL);
+		return (NULL);
 	}
 	i = 0;
 
@@ -46,13 +46,14 @@ char *argstostr(int ac, char **av)
 
 		while (av[i][j] != '\0')
 		{
-			newstr[i] = av[i][j];
-			i++;
+			newstr[k] = av[i][j];
 			j++;
+			k++;
 		}
 		newstr[i] = '\n';
+		k++;
 		i++;
 	}
-	newstr[i] = '\0';
+	newstr[k] = '\0';
 	return (newstr);
 }
