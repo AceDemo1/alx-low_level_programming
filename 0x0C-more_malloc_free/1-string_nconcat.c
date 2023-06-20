@@ -21,7 +21,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		len2++;
 	}
-	char *newmo = malloc(len1 + n + 1);
+	char *newmo = malloc(sizeof(char) * len1 + n + 1);
 
 	if (newmo == NULL)
 	{
@@ -32,7 +32,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		newmo[i] = s1[i];
 		i++;
 	}
-	if (n >= len2 - 1)
+	if (n >= len2)
 	{
 		while (s2[j] != '\0')
 		{
