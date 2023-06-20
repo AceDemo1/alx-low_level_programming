@@ -49,5 +49,5 @@ char *argstostr(int ac, char **av)
 		i++;
 	}
 	newstr[k] = '\0';
-	return (newstr);
+	return(newstr);
 }
