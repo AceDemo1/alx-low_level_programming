@@ -27,7 +27,6 @@ char *argstostr(int ac, char **av)
 			tot++;
 		}
 		a++;
-		tot++;
 	}
 	char *newstr = malloc(sizeof(char) * (tot + 1));
 
