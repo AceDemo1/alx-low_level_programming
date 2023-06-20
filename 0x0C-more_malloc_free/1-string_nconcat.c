@@ -11,7 +11,7 @@
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int len1 = 0, len2 = 0, i = 0, j = 0;
+	unsigned int len1 = 0, len2 = 0, i = 0, j = 0;
 	char *newmo;
 
 	if (s1 == NULL)
@@ -41,7 +41,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 	else if (n < len2)
 	{
-		while (j <= n)
+		while (j < n)
 		{
 			newmo[i] = s2[j];
 			i++;
