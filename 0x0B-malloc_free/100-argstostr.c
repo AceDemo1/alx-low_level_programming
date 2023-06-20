@@ -42,18 +42,16 @@ char *argstostr(int ac, char **av)
 
 	while (i < ac)
 	{
-		char *an = av[i];
 		int j = 0;
 
-		while (an[j] != '\0')
+		while (av[i][j] != '\0')
 		{
-			newstr[i] = an[j];
+			newstr[i] = av[i][j];
 			i++;
 			j++;
 		}
 		newstr[i] = '\n';
-		i++
-		av++;
+		i++;
 	}
 	newstr[i] = '\0';
 	return (newstr);
