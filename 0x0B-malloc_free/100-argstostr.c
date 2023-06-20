@@ -13,7 +13,7 @@
 
 char *argstostr(int ac, char **av)
 {
-	int tot;
+	int tot = 0;
 
 	if (ac == 0 || av == NULL)
 	{
@@ -21,18 +21,21 @@ char *argstostr(int ac, char **av)
 	}
 	char *newstr;
 	int a = 0, i = 0;
+
 	while (a < ac)
 	{
 		int b = 0;
 		while (av[b] != '\0')
 		{
 			b++;
-			tot += b;
 		}
+		tot += b;
 		a++;
 		tot += a;
 	}
 	newstr = malloc(sizeof(char) * (tot + 1));
+	i = 0;
+
 	while (i < ac)
 	{
 		char *an = av[i];
@@ -44,8 +47,9 @@ char *argstostr(int ac, char **av)
 			i++;
 			j++;
 		}
-		newstr[i] = '\n';
 		i++;
 	}
+
+	newstr[i] = '\n';
 	return (newstr);
 }
