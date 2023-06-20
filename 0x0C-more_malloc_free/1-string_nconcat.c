@@ -52,7 +52,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 	else if (s2 == NULL)
 	{
-		newmo[i] = " ";
+		newmo[i] = ' ';
 	}
 	return (newmo);
 }
