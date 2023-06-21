@@ -33,7 +33,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		free(ptr);
 		return (NULL);
 	}
-	char *d = (char *)newall;
+	char *d = newall;
 
 	if (new_size > old_size)
 		n = old_size;
