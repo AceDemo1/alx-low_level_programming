@@ -18,10 +18,11 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	if (nmemb == 0 || size == 0)
 		return (NULL);
-	unsigned int tot = nmemb * size;
+	unsigned int tot;
 	unsigned int i = 0;
-	unsigned char *b = unsigned char *p;
+	unsigned char *b = (unsigned char *)p;
 
+	tot = nmemb * size;
 	while (i < tot)
 	{
 		b[i] = 0;
