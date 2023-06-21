@@ -15,10 +15,9 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	unsigned int i, n = new_size;
 	char *s = (char *)ptr;
-	void *newall;
+	void *newall = malloc(sizeof(char) * (new_size));
 	char *d = newall;
-       
-	newall = malloc(sizeof(char) * (new_size));
+	
 	if (newall == NULL)
 		return (NULL);
 	if (new_size == old_size)
