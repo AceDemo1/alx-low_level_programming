@@ -29,7 +29,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 			free(new_dog);
 			return (NULL);
 		}
-	while (name[l] != '\0')
+	while (k <= i)
 	{
 		new_dog->name[k] = name[l];
 		k++;
@@ -42,7 +42,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 			free(new_dog);
 			return (NULL);
 		}
-	while (owner[n] != '\0')
+	while (n <= j)
 	{
 		new_dog->owner[n] = owner[o];
 		n++;
