@@ -26,7 +26,7 @@ void print_all(constchar * const format, ...)
  			else
  				printf("%s",str);
 		}
- 		if (format[i + 1] && ((format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's'))
+ 		if (format[i + 1] && (format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's'))
 				printf(", ");
 		i++;
 	}
