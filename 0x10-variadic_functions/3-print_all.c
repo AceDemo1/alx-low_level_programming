@@ -1,14 +1,15 @@
 #include "variadic_functions.h"
 
 /**
- *print_all-printsanything
- *@format:listoftypesofargumentspassedtothefunction
+ * print_all - prints anything(any data type)
+ * @format: pointer to string of data format types
  */
-void print_all(constchar * const format, ...)
+void print_all(const char * const format, ...)
 {
 	int i = 0;
 	char *str;
 	va_list a;
+
 	va_start(a, format);
 	while (format[i])
  	{
