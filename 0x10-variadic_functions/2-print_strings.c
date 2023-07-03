@@ -11,6 +11,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	unsigned int i;
 	va_list a;
 	char *str;
+
 	va_start(a, n);
 	while (i < n)
 	{
