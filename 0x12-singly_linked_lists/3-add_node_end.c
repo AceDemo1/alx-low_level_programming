@@ -20,7 +20,7 @@ list_t *add_node_end(list_t **head, const char *str)
 		return (NULL);
 	if (str == NULL)
 		return (NULL);
-	for (i = 0; str[i]; i++;);
+	for (i = 0; str[i]; i++);
 	newNode->len = i;
 	newNode->str = strdup(str);
 	temp = *head;
