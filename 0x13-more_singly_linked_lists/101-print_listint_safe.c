@@ -10,33 +10,47 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *current = head;
+	const listint_t *slow, *fast;
 	size_t count = 0;
-	int *visited = NULL;
 	int is_loop = 0;
 
-	visited = calloc(1024, sizeof(int));
-	if (visited == NULL)
-		exit(98);
+	slow = fast = head;
 
-	while (current)
+	while (slow && fast && fast->next)
 	{
-		if (visited[((size_t)current) % 1024])
+		slow = slow->next;
+		fast = fast->next->next;
+
+		if (slow == fast)
 		{
 			is_loop = 1;
 			break;
 		}
-
-		visited[((size_t)current) % 1024] = 1;
-		printf("[%p] %d\n", (void *)current, current->n);
-		count++;
-		current = current->next;
 	}
 
-	free(visited);
-
 	if (is_loop)
-		printf("-> [%p] %d\n", (void *)current, current->n);
+	{
+		slow = head;
+		while (slow != fast)
+		{
+			printf("[%p] %d\n", (void *)slow, slow->n);
+			count++;
+			slow = slow->next;
+			fast = fast->next;
+		}
+		printf("[%p] %d\n", (void *)slow, slow->n);
+		count++;
+		printf("-> [%p] %d\n", (void *)fast, fast->n);
+	}
+	else
+	{
+		while (head)
+		{
+			printf("[%p] %d\n", (void *)head, head->n);
+			count++;
+			head = head->next;
+		}
+	}
 
 	return count;
 }
