@@ -10,42 +10,107 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *slow, *fast;
+	const listint_t *current;
+	const listint_t *loop_node;
 	size_t count = 0;
+
+	current = head;
+
+	/* Check if the list is empty */
+	if (current == NULL)
+		return (0);
+
+	/* Detect loop using Floyd's cycle detection algorithm */
+	loop_node = find_loop_node(current);
+
+	if (loop_node != NULL)
+	{
+		print_with_loop(current, loop_node);
+		return (count);
+	}
+
+	/* No loop detected, print the list normally */
+	while (current != NULL)
+	{
+		printf("[%p] %d\n", (void *)current, current->n);
+		current = current->next;
+		count++;
+	}
+
+	return (count);
+}
+
+/**
+ * find_loop_node - Finds the node where the loop begins in a linked list.
+ * @head: A pointer to the head of the list.
+ *
+ * Return: The node where the loop begins, or NULL if there is no loop.
+ */
+const listint_t *find_loop_node(const listint_t *head)
+{
+	const listint_t *slow, *fast;
 
 	slow = head;
 	fast = head;
 
-	while (slow != NULL && fast != NULL && fast->next != NULL)
+	while (fast != NULL && fast->next != NULL)
 	{
-		printf("[%p] %d\n", (void *)slow, slow->n);
 		slow = slow->next;
 		fast = fast->next->next;
 
 		if (slow == fast)
 		{
-			printf("[%p] %d\n", (void *)slow, slow->n);
-			break;
+			slow = head;
+			while (slow != fast)
+			{
+				slow = slow->next;
+				fast = fast->next;
+			}
+			return slow;
 		}
-
-		count++;
 	}
 
-	if (slow == fast)
+	return NULL;
+}
+
+/**
+ * print_with_loop - Prints a linked list containing a loop.
+ * @head: A pointer to the head of the list.
+ * @loop_node: The node where the loop begins.
+ */
+void print_with_loop(const listint_t *head, const listint_t *loop_node)
+{
+	const listint_t *current = head;
+	size_t count = 0;
+	int loop_started = 0;
+
+	while (current != NULL)
 	{
-		slow = head;
-		while (slow != fast)
+		printf("[%p] %d\n", (void *)current, current->n);
+
+		count++;
+		current = current->next;
+
+		/* Check if the current node is the loop node */
+		if (current == loop_node)
 		{
-			printf("[%p] %d\n", (void *)slow, slow->n);
-			slow = slow->next;
-			fast = fast->next;
-			count++;
+			if (loop_started)
+				break;
+			else
+				loop_started = 1;
 		}
-		printf("[%p] %d\n", (void *)slow, slow->n);
-		printf("-> [%p] %d\n", (void *)fast->next, fast->next->n);
+	}
+
+	printf("-> [%p] %d\n", (void *)current, current->n);
+	count++;
+
+	while (current->next != loop_node)
+	{
+		current = current->next;
 		count++;
 	}
 
-	return (count);
+	printf("Loop starts at [%p] %d\n", (void *)current, current->n);
+	printf("Loop size = %lu\n", count);
 }
 
