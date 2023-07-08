@@ -11,7 +11,6 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	const listint_t *current = head;
-	const listint_t *temp; 
 	size_t count = 0;
 
 	while (current)
@@ -26,7 +25,6 @@ size_t print_listint_safe(const listint_t *head)
 			break;
 		}
 
-		temp = current;
 		current = current->next;
 	}
 
