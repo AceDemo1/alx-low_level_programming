@@ -87,27 +87,33 @@ void print_with_loop(const listint_t *head, const listint_t *loop_node)
 	size_t count = 0;
 	int loop_started = 0;
 
-	while (current != loop_node)
+	while (current != NULL)
 	{
 		printf("[%p] %d\n", (void *)current, current->n);
 
 		count++;
 		current = current->next;
+
+		/* Check if the current node is the loop node */
+		if (current == loop_node)
+		{
+			if (loop_started)
+				break;
+			else
+				loop_started = 1;
+		}
 	}
 
-	printf("[%p] %d\n", (void *)current, current->n);
-	printf("-> [%p] %d\n", (void *)current->next, current->next->n);
+	printf("-> [%p] %d\n", (void *)current, current->n);
 	count++;
 
-	current = current->next;
-	while (current != loop_node)
+	while (current->next != loop_node)
 	{
-		printf("[%p] %d\n", (void *)current, current->n);
 		current = current->next;
 		count++;
 	}
 
-	printf("Loop starts at [%p] %d\n", (void *)loop_node, loop_node->n);
+	printf("Loop starts at [%p] %d\n", (void *)current, current->n);
 	printf("Loop size = %lu\n", count);
 }
 
