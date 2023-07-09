@@ -10,8 +10,8 @@
  */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *current, *temp;
 	size_t count = 0;
+	listint_t *current, *next_node;
 
 	if (h == NULL || *h == NULL)
 		return (0);
@@ -19,18 +19,17 @@ size_t free_listint_safe(listint_t **h)
 	current = *h;
 	while (current != NULL)
 	{
+		next_node = current->next;
+		free(current);
 		count++;
-		temp = current;
-		current = current->next;
-		free(temp);
 
-		/* Check if the current node points back to a previous node */
-		if (current == *h)
-		{
-			*h = NULL;
+		if (next_node >= current)
 			break;
-		}
+
+		current = next_node;
 	}
+
+	*h = NULL;  // Set the head pointer to NULL
 
 	return (count);
 }
