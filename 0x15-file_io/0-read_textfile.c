@@ -22,11 +22,11 @@ ssize_t read_textfile(const char *filename, size_t letters)
                 fclose(f);
                 return (0);
         }
-	r = read(b, f, letters);
+	r = fread(b, sizeof(char), letters, f);
 	if (r == -1)
 	{
 		fclose(f);
-		free(buffer);
+		free(b);
 		return (0);
 	}
 	w = write(STDOUT_FILENO, b, r);
@@ -39,4 +39,5 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	fclose(f);
 	free(b);
 	return (r);
+}
 
