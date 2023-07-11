@@ -23,7 +23,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		fclose(f);
 		return (0);
 	}
-	r = fread(b, sizeof(char), letters, f);
+	r = read(b, sizeof(char), letters, f);
 	if (r == -1)
 	{
 		fclose(f);
