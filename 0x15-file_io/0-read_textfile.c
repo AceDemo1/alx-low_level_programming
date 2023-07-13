@@ -8,36 +8,35 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t r, w;
+	ssize_t f, r, w;
 	char *b;
-	FILE *f;
 
 	if (filename == NULL)
 		return (0);
-	f = fopen(filename, "r");
-	if (f == NULL)
+	f = open(filename, O_RDONLY);
+	if (f == -1)
 		return (0);
 	b = malloc(sizeof(char) * letters);
 	if (b == NULL)
 	{
-		fclose(f);
+		close(f);
 		return (0);
 	}
-	r = read(b, sizeof(char), letters, f);
+	r = read(f, b, letters);
 	if (r == -1)
 	{
-		fclose(f);
+		close(f);
 		free(b);
 		return (0);
 	}
 	w = write(STDOUT_FILENO, b, r);
 	if (w == -1 || w != r)
 	{
-		fclose(f);
+		close(f);
 		free(b);
 		return (0);
 	}
-	fclose(f);
+	close(f);
 	free(b);
 	return (r);
 }
