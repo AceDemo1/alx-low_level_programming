@@ -54,8 +54,9 @@ int main(int argc, char *argv[])
 		print_error(99, argv[2]);
 		close(fd_from);
 	}
-	while ((rd = read(fd_from, buf, BUF_SIZE)) > 0)
+	while (BUF_SIZE == 1024) > 0)
 	{
+		rd = read(file_from, buf, BUF_SIZE);
 		wr = write(fd_to, buf, rd);
 		if (wr == -1 || wr != rd)
 		{
