@@ -37,11 +37,20 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	o1 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	w = write(o1, buf, r);
-	if (o1 == -1 || w == -1 || w != r)
+	if (o1 == -1)
 	{
 		perr("Error: Can't write to", argv[2], 0);
 		exit(99);
+	}
+
+	while (r > 0)
+	{
+		w = write(o1, buf, r);
+		if (w == -1 || w != r)
+		{
+			perr("Error: Can't write to", argv[2], 0);
+			exit(99);
+		}
 	}
 	close(o);
 	if (close(o) == -1)
