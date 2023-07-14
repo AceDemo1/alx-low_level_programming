@@ -26,19 +26,19 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		perr("Usage: cp file_from file_to", NULL, 0);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	o = open(argv[1], O_RDONLY);
 	if (o == -1)
 	{
-		perr("Error: Can't read from file", argv[1], 0);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	o1 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (o1 == -1)
 	{
-		perr("Error: Can't write to", argv[2], 0);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 
@@ -47,13 +47,14 @@ int main(int argc, char *argv[])
 		w = write(o1, buf, r);
 		if (w == -1 || w != r)
 		{
-			perr("Error: Can't write to", argv[2], 0);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			close(o);
 			exit(99);
 		}
 	}
 	if (r == -1)
 	{
-		perr("Error: Can't read from file", argv[1], 0);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	close(o);
