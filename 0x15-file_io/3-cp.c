@@ -1,5 +1,18 @@
 #include "main.h"
 /**
+ * perr - print error message to the standard error output)
+ * @msg: message to print
+ */
+void perr(const char *msg, const char *arg, int i)
+{
+	if (arg != NULL && i == 0)
+		dprintf(STDERR_FILENO, "%s %s\n", msg, arg);
+	else if (arg == NULL && i == 0)
+		dprintf(STDERR_FILENO, "%s\n", msg);
+	else if (arg == NULL && i != 0)
+		dprintf(STDERR_FILENO, "%s %d\n", msg, i);
+}
+/**
  * main - copies the content of a file to another file
  * @argc: number of arguments passed to the program
  * @argv: array of arguments
@@ -8,43 +21,37 @@
  */
 int main(int argc, char *argv[])
 {
-	int fd_r, fd_w, x, m, n;
-	char buf[BUFSIZ];
+	int o, r, w, o1;
+	char buf[1024];
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		perr("Usage: cp file_from file_to", NULL, 0);
 		exit(97);
 	}
-	fd_r = open(argv[1], O_RDONLY);
-	if (fd_r < 0)
+	o = open(argv[1], O_RDONLY);
+	r = read(o, buf, 1024);
+	if (o == -1 || r == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
+		perr("Error: Can't read from file", argv[1], 0);
+ 		exit(98);
 	}
-	fd_w = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	while ((x = read(fd_r, buf, BUFSIZ)) > 0)
+	o1 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	w = write(o1, buf, r);
+	if (o1 == -1 || w == -1 || w != r)
 	{
-		if (fd_w < 0 || write(fd_w, buf, x) != x)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			close(fd_r);
-			exit(99);
-		}
+		perr("Error: Can't write to", argv[2], 0);
+		exit(99);
 	}
-	if (x < 0)
+	close(o);
+	if (close(o) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
+		perr("Error: Can't close", NULL, o);
+		exit(100);
 	}
-	m = close(fd_r);
-	n = close(fd_w);
-	if (m < 0 || n < 0)
+	if (close(o1) == -1)
 	{
-		if (m < 0)
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_r);
-		if (n < 0)
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_w);
+		perr("Error: Can't close", NULL, o1);
 		exit(100);
 	}
 	return (0);
