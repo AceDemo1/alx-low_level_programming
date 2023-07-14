@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
 		perr("Error: Can't close", NULL, o);
 		exit(100);
 	}
+	close(o1);
 	if (close(o1) == -1)
 	{
 		perr("Error: Can't close", NULL, o1);
