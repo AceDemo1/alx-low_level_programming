@@ -1,76 +1,52 @@
 #include "main.h"
-/**
- * print_error - prints an error message to stderr
- * @code: error code
- * @file: file name
- *
- * Description: Prints error messages to the POSIX standard error based on the
- * provided error code and file name.
- */
-void print_error(int code, char *file)
-{
-	if (code == 97)
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-	else if (code == 98)
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
-	else if (code == 99)
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
-	else if (code == 100)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", file);
-	exit(code);
-}
+
 /**
  * main - copies the content of a file to another file
  * @argc: number of arguments passed to the program
  * @argv: array of arguments
  *
- * Return: 0 on success, appropriate error code on failure
- *
- * Description: The main function copies the content of a file specified by the
- * file_from argument to a new file specified by the file_to argument. It reads
- * the file_from in chunks of BUF_SIZE bytes and writes them to file_to. It
- * performs error checking and prints appropriate error messages to the POSIX
- * standard error based on different failure scenarios.
+ * Return: Always 0 (Success)
  */
 int main(int argc, char *argv[])
 {
-	int fd_from, fd_to, rd, wr;
-	char buf[1024];
+	int fd_r, fd_w, x, m, n;
+	char buf[BUFSIZ];
 
 	if (argc != 3)
-		print_error(97, NULL);
-	fd_from = open(argv[1], O_RDONLY);
-	if (fd_from == -1)
-		print_error(98, argv[1]);
-	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (fd_to == -1)
 	{
-		print_error(99, argv[2]);
-		close(fd_from);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
 	}
-	rd = read(fd_from, buf, 1024);
-	while (rd > 1)
+	fd_r = open(argv[1], O_RDONLY);
+	if (fd_r < 0)
 	{
-		wr = write(fd_to, buf, rd);
-		if (wr == -1 || wr != rd)
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	fd_w = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	while ((x = read(fd_r, buf, BUFSIZ)) > 0)
+	{
+		if (fd_w < 0 || write(fd_w, buf, x) != x)
 		{
-			print_error(99, argv[2]);
-			close(fd_from);
-			close(fd_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			close(fd_r);
+			exit(99);
 		}
 	}
-	if (rd == -1)
+	if (x < 0)
 	{
-		print_error(98, argv[1]);
-		close(fd_from);
-		close(fd_to);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
 	}
-	if (close(fd_from) == -1)
+	m = close(fd_r);
+	n = close(fd_w);
+	if (m < 0 || n < 0)
 	{
-		print_error(100, argv[1]);
-		close(fd_to);
+		if (m < 0)
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_r);
+		if (n < 0)
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_w);
+		exit(100);
 	}
-	if (close(fd_to) == -1)
-		print_error(100, argv[2]);
 	return (0);
 }
