@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 
-	while ((r = read(o, buf, 1024)) > 0)
+	while ((r = read(o, buf, sizeof(buf))) > 0)
 	{
 		w = write(o1, buf, r);
 		if (w == -1 || w != r)
@@ -56,7 +56,6 @@ int main(int argc, char *argv[])
 		perr("Error: Can't read from file", argv[1], 0);
 		exit(98);
 	}
-
 	close(o);
 	if (close(o) == -1)
 	{
