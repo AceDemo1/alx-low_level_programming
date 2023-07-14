@@ -1,7 +1,4 @@
 #include "main.h"
-
-#define BUF_SIZE 1024
-
 /**
  * print_error - prints an error message to stderr
  * @code: error code
@@ -22,7 +19,6 @@ void print_error(int code, char *file)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", file);
 	exit(code);
 }
-
 /**
  * main - copies the content of a file to another file
  * @argc: number of arguments passed to the program
@@ -39,12 +35,10 @@ void print_error(int code, char *file)
 int main(int argc, char *argv[])
 {
 	int fd_from, fd_to, rd, wr;
-	char buf[BUF_SIZE];
+	char buf[1024];
 
 	if (argc != 3)
-	{
 		print_error(97, NULL);
-	}
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from == -1)
 		print_error(98, argv[1]);
@@ -54,9 +48,9 @@ int main(int argc, char *argv[])
 		print_error(99, argv[2]);
 		close(fd_from);
 	}
-	while ((BUF_SIZE == 1024) > 0)
+	rd = read(fd_from, buf, 1024);
+	while (rd > 1)
 	{
-		rd = read(fd_from, buf, BUF_SIZE);
 		wr = write(fd_to, buf, rd);
 		if (wr == -1 || wr != rd)
 		{
