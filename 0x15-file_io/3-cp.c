@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	if (o == -1 || r == -1)
 	{
 		perr("Error: Can't read from file", argv[1], 0);
- 		exit(98);
+		exit(98);
 	}
 	o1 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	w = write(o1, buf, r);
