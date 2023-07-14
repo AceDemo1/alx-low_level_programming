@@ -30,8 +30,7 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	o = open(argv[1], O_RDONLY);
-	r = read(o, buf, 1024);
-	if (o == -1 || r == -1)
+	if (o == -1)
 	{
 		perr("Error: Can't read from file", argv[1], 0);
 		exit(98);
@@ -43,7 +42,7 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 
-	while (r > 0)
+	while ((r = read(o, buf, 1024)) > 0)
 	{
 		w = write(o1, buf, r);
 		if (w == -1 || w != r)
@@ -52,6 +51,12 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 	}
+	if (r == -1)
+	{
+		perr("Error: Can't read from file", argv[1], 0);
+		exit(98);
+	}
+
 	close(o);
 	if (close(o) == -1)
 	{
