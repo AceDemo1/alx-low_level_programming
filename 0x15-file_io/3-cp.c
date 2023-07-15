@@ -36,7 +36,7 @@ void print_error(int code, char *file)
  */
 int main(int argc, char *argv[])
 {
-	int fd_from, fd_to, rd, wr;
+	int fd_from, fd_to, rd, wr, c, c1;
 	char buf[1024];
 
 	if (argc != 3)
@@ -46,38 +46,22 @@ int main(int argc, char *argv[])
 		print_error(98, argv[1]);
 	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd_to == -1)
-	{
 		print_error(99, argv[2]);
-		close(fd_from);
-	}
-
+	rd = read(fd_from, buf, 1024);
+	if (rd == -1)
+		print_error(98, argv[1]);
 	while (rd > 1)
 	{
-		rd = read(fd_from, buf, 1024);
-		if (rd == -1)
-		{
-			print_error(98, argv[1]);
-			close(fd_from);
-			close(fd_to);
-		}
 		wr = write(fd_to, buf, rd);
 		if (wr == -1 || wr != rd)
-		{
 			print_error(99, argv[2]);
-			close(fd_from);
-			close(fd_to);
-		}
 	}
-	if (close(fd_from) == -1)
-	{
+	c = close(fd_to);
+	if (c == -1)
 		print_error(100, argv[1]);
-		close(fd_to);
-	}
-	if (close(fd_to) == -1)
-	{
+	c1 = close(fd_to);
+	if (c1 == -1)
 		print_error(100, argv[2]);
-		close(fd_to);
-	}
 	return (0);
 }
 
