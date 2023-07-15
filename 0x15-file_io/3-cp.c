@@ -48,8 +48,8 @@ int main(int argc, char *argv[])
                 print_error(99, argv[2]);
                 close(fd_from);
         }
-	
-	while (rd > 1)
+	rd = 1024;
+	while (rd == 1024)
         {
 		rd = read(fd_from, buf, 1024);
 		if (rd == -1)
