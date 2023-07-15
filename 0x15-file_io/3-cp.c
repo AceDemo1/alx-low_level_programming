@@ -74,7 +74,10 @@ int main(int argc, char *argv[])
 		close(fd_to);
 	}
 	if (close(fd_to) == -1)
+	{
 		print_error(100, argv[2]);
+		close(fd_to);
+	}
 	return (0);
 }
 
