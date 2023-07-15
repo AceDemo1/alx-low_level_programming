@@ -1,73 +1,77 @@
 #include "main.h"
-#include <stdio.h>
-
 /**
- * error_file - checks if files can be opened.
- * @file_from: file_from.
- * @file_to: file_to.
- * @argv: arguments vector.
- * Return: no return.
+ * print_error - prints an error message to stderr
+ * @code: error code
+ * @file: file name
+ *
+ * Description: Prints error messages to the POSIX standard error based on the
+ * provided error code and file name.
  */
-void error_file(int file_from, int file_to, char *argv[])
+void print_error(int code, char *file)
 {
-	if (file_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
-	if (file_to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+        if (code == 97)
+                dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+        else if (code == 98)
+                dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
+        else if (code == 99)
+                dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
+        else if (code == 100)
+                dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", file);
+        exit(code);
 }
-
 /**
- * main - check the code for ALX students.
- * @argc: number of arguments.
- * @argv: arguments vector.
- * Return: Always 0.
+ * main - copies the content of a file to another file
+ * @argc: number of arguments passed to the program
+ * @argv: array of arguments
+ *
+ * Return: 0 on success, appropriate error code on failure
+ *
+ * Description: The main function copies the content of a file specified by the
+ * file_from argument to a new file specified by the file_to argument. It reads
+ * the file_from in chunks of BUF_SIZE bytes and writes them to file_to. It
+ * performs error checking and prints appropriate error messages to the POSIX
+ * standard error based on different failure scenarios.
  */
 int main(int argc, char *argv[])
 {
-	int file_from, file_to, err_close;
-	ssize_t nchars, nwr;
-	char buf[1024];
+        int fd_from, fd_to, rd, wr;
+        char buf[1024];
 
-	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
-		exit(97);
-	}
-
-	file_from = open(argv[1], O_RDONLY);
-	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
-	error_file(file_from, file_to, argv);
-
-	nchars = 1024;
-	while (nchars == 1024)
-	{
-		nchars = read(file_from, buf, 1024);
-		if (nchars == -1)
-			error_file(-1, 0, argv);
-		nwr = write(file_to, buf, nchars);
-		if (nwr == -1)
-			error_file(0, -1, argv);
-	}
-
-	err_close = close(file_from);
-	if (err_close == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-		exit(100);
-	}
-
-	err_close = close(file_to);
-	if (err_close == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-		exit(100);
-	}
-	return (0);
+        if (argc != 3)
+                print_error(97, NULL);
+        fd_from = open(argv[1], O_RDONLY);
+        if (fd_from == -1)
+                print_error(98, argv[1]);
+        fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        if (fd_to == -1)
+        {
+                print_error(99, argv[2]);
+                close(fd_from);
+        }
+	
+	while (rd > 1)
+        {
+		rd = read(fd_from, buf, 1024);
+		if (rd == -1)
+		{
+                	print_error(98, argv[1]);
+                	close(fd_from);
+                	close(fd_to);
+		}
+                wr = write(fd_to, buf, rd);
+                if (wr == -1 || wr != rd)
+                {
+                        print_error(99, argv[2]);
+                        close(fd_from);
+                        close(fd_to);
+                }
+        }
+        if (close(fd_from) == -1)
+        {
+                print_error(100, argv[1]);
+                close(fd_to);
+        }
+        if (close(fd_to) == -1)
+                print_error(100, argv[2]);
+        return (0);
 }
-
