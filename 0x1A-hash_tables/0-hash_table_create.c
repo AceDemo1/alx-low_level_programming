@@ -6,6 +6,7 @@
  * Return: If an error occurs - NULL
  *         Otherwise - a pointer to the new hash table
  */
+
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *ht;
@@ -22,7 +23,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 			free(ht);
 			return (NULL);
 		}
-		return (hash_table_t);
+		return (ht);
 	}
 	return (NULL);
 }
