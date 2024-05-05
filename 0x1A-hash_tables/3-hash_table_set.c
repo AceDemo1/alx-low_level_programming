@@ -20,10 +20,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	j = ht->array[in];
 	while (j)
 	{
-		if (strcmp(j->array[in]->key, key) == 0)
+		if (strcmp(j->key, key) == 0)
 		{
-			j->array[in]->value = strdup(value);
-			if (!(j->array[in]->value))
+			j->value = strdup(value);
+			if (!(j->value))
 				return (0);
 			return (1);
 		}
