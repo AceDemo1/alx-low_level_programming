@@ -23,4 +23,4 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		k = k->next;
 	}
 	return (NULL);
-}         
+}
