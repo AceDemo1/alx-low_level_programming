@@ -12,12 +12,12 @@ void hash_table_print(const hash_table_t *ht)
 	if (!ht)
 		return;
 	printf("{");
-	while (k < i->size)
+	while (k < ht->size)
 	{
-		j = i->array[k];
+		j = ht->array[k];
 		while (j)
 		{
-			printf("'%s': '%s'%s", j->key, j->value, (k != i->size - 1 || j->next) ? "," : "");
+			printf("'%s': '%s'%s", j->key, j->value, (k != ht->size - 1 || j->next) ? "," : "");
 			j = j->next;
 		}
 		k++;
