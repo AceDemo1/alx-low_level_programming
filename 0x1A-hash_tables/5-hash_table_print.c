@@ -17,7 +17,7 @@ void hash_table_print(const hash_table_t *ht)
 		j = ht->array[k];
 		while (j)
 		{
-			printf("'%s': '%s'%s", j->key, j->value, (k != ht->size - 1 || j->next) ? "," : "");
+			printf("'%s': '%s'%s", j->key, j->value, (k != ht->size - 1 || j->next != NULL) ? ", " : "");
 			j = j->next;
 		}
 		k++;
