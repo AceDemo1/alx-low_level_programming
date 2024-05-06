@@ -25,4 +25,5 @@ void hash_table_print(hash_table_t *ht)
 		i++;
 	}
 	free(ht->array);
+	free(ht);
 }
