@@ -6,11 +6,10 @@
  */
 void hash_table_print(const hash_table_t *ht)
 {
-	hash_table_t *i = ht;
 	unsigned long int k = 0;
 	hash_node_t *j;
 
-	if (!i)
+	if (!ht)
 		return;
 	printf("{");
 	while (k < i->size)
